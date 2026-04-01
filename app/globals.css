@@ -1,26 +1,312 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: #F5EDE0;
+  --color-foreground: #1c1917;
+  --color-brass: #C8956C;
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-dm-sans);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ── Reset ────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #F5EDE0;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #F5EDE0;
+  color: var(--color-foreground);
+  font-family: var(--font-sans), 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Typography ───────────────────────────────────────── */
+
+.font-display {
+  font-family: var(--font-serif), 'Cormorant Garamond', serif;
+}
+
+.font-body {
+  font-family: var(--font-sans), 'DM Sans', sans-serif;
+}
+
+/* ── Canvas ───────────────────────────────────────────── */
+
+canvas {
+  display: block;
+  background-color: #F5EDE0;
+}
+
+/* ── Sections ─────────────────────────────────────────── */
+
+section {
+  overflow-x: hidden;
+}
+
+/* ── Loading progress bar ─────────────────────────────── */
+
+.progress-track {
+  width: 200px;
+  height: 1px;
+  background-color: rgba(200, 149, 108, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #C8956C;
+  transition: width 80ms ease-out;
+}
+
+/* ── View All Projects link underline ─────────────────── */
+
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+
+.link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C8956C;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Scrollbar ────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F5EDE0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 149, 108, 0.35);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 149, 108, 0.55);
+}
+
+/* ── Selection ────────────────────────────────────────── */
+
+::selection {
+  background-color: rgba(200, 149, 108, 0.25);
+  color: #1c1917;
+}
+
+/* ── Image Loading Skeletons ──────────────────────────── */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes scrollLine {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 1;
+  }
+
+  85% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(280%);
+    opacity: 0;
+  }
+}
+
+/* ── Project Card Hover ───────────────────────────────── */
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.project-card-inner {
+  transition: transform 500ms ease;
+}
+
+.project-card:hover .project-card-inner {
+  transform: scale(1.02);
+}
+
+.card-hover-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(to top,
+      rgba(15, 14, 13, 0.85) 0%,
+      transparent 100%);
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.project-card:hover .card-hover-overlay {
+  opacity: 1;
+}
+
+.card-hover-info {
+  transform: translateY(8px);
+  transition: transform 350ms ease;
+}
+
+.project-card:hover .card-hover-overlay .card-hover-info {
+  transform: translateY(0);
+}
+
+.project-card:hover .project-card-inner {
+  transform: scale(1.02);
+}
+
+/* ── Navbar ───────────────────────────────────────────── */
+
+.nav-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.nav-desktop {
+  display: flex;
+}
+
+.nav-mobile-only {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .nav-container {
+    padding: 0 20px;
+  }
+
+  .nav-desktop {
+    display: none !important;
+  }
+
+  .nav-mobile-only {
+    display: flex !important;
+  }
+}
+
+/* hero link underline animation */
+.nav-link-hero {
+  position: relative;
+}
+
+.nav-link-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #C8956C;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 300ms ease;
+}
+
+.nav-link-hero:hover {
+  color: rgba(255, 255, 255, 1) !important;
+}
+
+.nav-link-hero:hover::after {
+  transform: scaleX(1);
+}
+
+/* scrolled link hover */
+.nav-link-scrolled:hover {
+  color: #1A1714 !important;
+}
+
+/* CTA button hover — hero state */
+.nav-cta-btn[data-scrolled="false"]:hover {
+  background-color: rgba(255, 255, 255, 0.12) !important;
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* CTA button hover — scrolled state */
+.nav-cta-btn[data-scrolled="true"]:hover {
+  background-color: #C8956C !important;
+  border-color: #C8956C !important;
+  color: #0F0E0D !important;
+}
+
+/* mobile drawer link hover */
+.mobile-drawer-link:hover {
+  color: #C8956C !important;
+}
+
+.mobile-social-link:hover {
+  color: #C8956C !important;
+}
+
+@keyframes bounceMobile {
+  0%, 100% {
+    transform: translateY(0px);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInMobileHero {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
