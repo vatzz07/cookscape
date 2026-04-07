@@ -31,7 +31,7 @@ const TEXT_BEATS: TextBeat[] = [
   {
     startProgress: 0.0,
     endProgress: 0.10,
-    heading: "Cookscape.",
+    heading: "Decorpot.",
     subtext: "Where architecture meets living.",
     position: "center-top",
   },
@@ -84,7 +84,189 @@ function drawCover(
 }
 
 /* ─── Component ─────────────────────────────────────────────────── */
-export default function CookscapeScroll() {
+/* ─── Components ────────────────────────────────────────────────── */
+
+function MobileHero() {
+  return (
+    <div
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "100svh",
+        overflow: "hidden",
+        backgroundColor: "#F5EDE0"
+      }}
+    >
+      {/* ── Background Image ── */}
+      <img
+        src="/interior design frames/00192.png"
+        alt="Decorpot luxury interior"
+        style={{
+          position: "absolute",
+          inset: "0",
+          width: "100%",
+          height: "100%",
+          objectFit: "cover",
+          objectPosition: "center center",
+          display: "block"
+        }}
+      />
+
+      {/* ── Top gradient vignette for navbar ── */}
+      <div style={{
+        position: "absolute",
+        top: "0",
+        left: "0",
+        right: "0",
+        height: "28%",
+        background: "linear-gradient(to bottom, rgba(10,9,8,0.55) 0%, transparent 100%)",
+        pointerEvents: "none",
+        zIndex: 5
+      }} />
+
+      {/* ── Bottom gradient vignette for text ── */}
+      <div style={{
+        position: "absolute",
+        bottom: "0",
+        left: "0",
+        right: "0",
+        height: "55%",
+        background: "linear-gradient(to top, rgba(10,9,8,0.75) 0%, rgba(10,9,8,0.35) 45%, transparent 100%)",
+        pointerEvents: "none",
+        zIndex: 5
+      }} />
+
+      {/* ── Hero Text Content ── */}
+      <div style={{
+        position: "absolute",
+        bottom: "0",
+        left: "0",
+        right: "0",
+        zIndex: 10,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        paddingBottom: "max(env(safe-area-inset-bottom, 24px), 32px)",
+        paddingLeft: "32px",
+        paddingRight: "32px",
+        animation: "fadeInMobileHero 1.2s cubic-bezier(0.4,0,0.2,1) 0.4s both"
+      }}>
+        {/* Label */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "9px",
+          letterSpacing: "0.45em",
+          textTransform: "uppercase",
+          color: "rgba(200,149,108,0.9)",
+          marginBottom: "14px",
+          textAlign: "center",
+          textShadow: "0 1px 12px rgba(0,0,0,0.8)"
+        }}>
+          Luxury Interior Design
+        </p>
+
+        {/* Main Heading */}
+        <h1 style={{
+          fontFamily: "'Cormorant Garamond', serif",
+          fontSize: "clamp(42px, 12vw, 68px)",
+          fontWeight: 300,
+          fontStyle: "italic",
+          color: "#FFFFFF",
+          textAlign: "center",
+          lineHeight: 1.1,
+          margin: "0 0 16px 0",
+          textShadow: "0 2px 40px rgba(0,0,0,0.9), 0 1px 12px rgba(0,0,0,0.7)"
+        }}>
+          Where Architecture<br />Meets Living.
+        </h1>
+
+        {/* Subtext */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "12px",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.6)",
+          textAlign: "center",
+          marginBottom: "32px",
+          textShadow: "0 1px 16px rgba(0,0,0,0.9)"
+        }}>
+          Decorpot Studio
+        </p>
+
+        {/* Thin divider line */}
+        <div style={{
+          width: "1px",
+          height: "40px",
+          background: "linear-gradient(to bottom, rgba(200,149,108,0.8), transparent)",
+          marginBottom: "24px"
+        }} />
+
+        {/* Scroll CTA */}
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "9px",
+          letterSpacing: "0.4em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.4)",
+          textAlign: "center",
+          marginBottom: "64px",
+          textShadow: "0 1px 8px rgba(0,0,0,0.8)"
+        }}>
+          Scroll to Explore
+        </p>
+      </div>
+
+      {/* ── Bottom Left Studio Tag ── */}
+      <div style={{
+        position: "absolute",
+        bottom: "28px",
+        left: "24px",
+        zIndex: 10,
+        borderLeft: "1px solid rgba(200,149,108,0.45)",
+        paddingLeft: "12px"
+      }}>
+        <p style={{
+          fontFamily: "'DM Sans', sans-serif",
+          fontSize: "8px",
+          letterSpacing: "0.28em",
+          textTransform: "uppercase",
+          color: "rgba(255,255,255,0.28)",
+          margin: 0,
+          textShadow: "0 1px 8px rgba(0,0,0,0.9)"
+        }}>
+          Residential & Commercial
+        </p>
+      </div>
+
+      {/* ── Animated Scroll Bounce Arrow ── */}
+      <div style={{
+        position: "absolute",
+        bottom: "36px",
+        right: "28px",
+        zIndex: 10
+      }}>
+        <svg
+          width="16"
+          height="24"
+          viewBox="0 0 16 24"
+          fill="none"
+          style={{ animation: "bounceMobile 2s cubic-bezier(0.4,0,0.2,1) infinite" }}
+        >
+          <path
+            d="M8 0 L8 18 M2 12 L8 18 L14 12"
+            stroke="rgba(200,149,108,0.7)"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
+function DesktopHero() {
   /* refs */
   const containerRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -100,20 +282,6 @@ export default function CookscapeScroll() {
   const [loaded, setLoaded] = useState(false);
   const [loadProgress, setLoadProgress] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showHint, setShowHint] = useState(true);
-
-  const [isMobile, setIsMobile] = useState(false)
-
-  useEffect(() => {
-    const check = () => {
-      setIsMobile(window.innerWidth < 1024)
-    }
-    check()
-    window.addEventListener('resize', check)
-    return () => window.removeEventListener(
-      'resize', check
-    )
-  }, [])
 
   /* ── preload all frames ─────────────────────────────────────── */
   useEffect(() => {
@@ -172,12 +340,6 @@ export default function CookscapeScroll() {
   }, [handleResize]);
 
   /* ── draw with sub-frame alpha blending ─────────────────────── */
-  //
-  //  Instead of snapping to the nearest integer frame, we compute the
-  //  exact fractional position and cross-fade between frame A and B.
-  //  e.g. progress=0.503  →  frameA=92, frameB=93, blend=0.55
-  //  This eliminates all visible "jumps" between frames.
-  //
   const drawBlended = useCallback((progress: number) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -187,11 +349,10 @@ export default function CookscapeScroll() {
     const w = window.innerWidth;
     const h = window.innerHeight;
 
-    // exact floating-point frame position
     const exactFrame = Math.min(TOTAL_FRAMES - 1, progress * TOTAL_FRAMES);
     const frameA = Math.floor(exactFrame);
     const frameB = Math.min(TOTAL_FRAMES - 1, frameA + 1);
-    const blend = exactFrame - frameA; // 0 → 1
+    const blend = exactFrame - frameA;
 
     const imgA = imagesRef.current[frameA];
     const imgB = imagesRef.current[frameB];
@@ -200,10 +361,8 @@ export default function CookscapeScroll() {
     ctx.fillStyle = BG;
     ctx.fillRect(0, 0, w, h);
 
-    // draw base frame
     if (imgA) drawCover(ctx, imgA, w, h);
 
-    // cross-fade to next frame when blend > a tiny threshold
     if (imgB && blend > 0.01) {
       ctx.save();
       ctx.globalAlpha = blend;
@@ -215,13 +374,6 @@ export default function CookscapeScroll() {
   }, []);
 
   /* ── continuous RAF render loop ─────────────────────────────── */
-  //
-  //  Rather than triggering a draw only on scroll events (which can
-  //  be throttled or batched by the browser), we run a permanent RAF
-  //  loop that reads the latest smoothed progress every ~16 ms.
-  //  This means the canvas always stays in sync with the spring,
-  //  even during the spring's "coast" phase after the user stops.
-  //
   useEffect(() => {
     let animId: number;
 
@@ -240,17 +392,6 @@ export default function CookscapeScroll() {
     offset: ["start start", "end end"],
   });
 
-  // ── TUNED SPRING ───────────────────────────────────────────────
-  //
-  //  Original:  stiffness:150  damping:20  mass:0.3  restDelta:0.001
-  //
-  //  Changes:
-  //   • stiffness ↓ 150 → 55   — more gradual follow-through
-  //   • damping   ↑ 20  → 28   — prevents any oscillation / bounce
-  //   • mass      ↑ 0.3 → 1.2  — heavier feel = cinematic inertia
-  //   • restDelta ↓ 0.001→0.0001 — spring "settles" more precisely,
-  //                               no early stop leaving a gap
-  //
   const smoothProgress = useSpring(scrollYProgress, {
     stiffness: 55,
     damping: 28,
@@ -259,13 +400,8 @@ export default function CookscapeScroll() {
   });
 
   useMotionValueEvent(smoothProgress, "change", (v) => {
-    // Write to ref — the RAF loop picks it up every frame
     liveProgressRef.current = v;
-
-    // React state only needs to update for text opacity calculations
-    // (cheap, doesn't trigger canvas draws)
     setScrollProgress(v);
-    setShowHint(v < 0.08);
   });
 
   /* ── text beat visibility ───────────────────────────────────── */
@@ -335,196 +471,6 @@ export default function CookscapeScroll() {
     }
   };
 
-  if (isMobile) {
-    return (
-      <div style={{
-        position: "relative",
-        width: "100%",
-        height: "100svh",
-        overflow: "hidden",
-        backgroundColor: "#F5EDE0"
-      }}>
-
-        {/* Hero Image */}
-        <img
-          src="/interior design frames/00192.png"
-          alt="Cookscape luxury interior"
-          style={{
-            position: "absolute",
-            inset: "0",
-            width: "100%",
-            height: "100%",
-            objectFit: "cover",
-            objectPosition: "center center",
-            display: "block"
-          }}
-        />
-
-        {/* Top vignette */}
-        <div style={{
-          position: "absolute",
-          top: "0",
-          left: "0",
-          right: "0",
-          height: "28%",
-          background: "linear-gradient(to bottom, rgba(10,9,8,0.55) 0%, transparent 100%)",
-          pointerEvents: "none",
-          zIndex: 5
-        }} />
-
-        {/* Bottom vignette */}
-        <div style={{
-          position: "absolute",
-          bottom: "0",
-          left: "0",
-          right: "0",
-          height: "55%",
-          background: "linear-gradient(to top, rgba(10,9,8,0.75) 0%, rgba(10,9,8,0.35) 45%, transparent 100%)",
-          pointerEvents: "none",
-          zIndex: 5
-        }} />
-
-        {/* Text content */}
-        <div
-          style={{
-            position: "absolute",
-            bottom: "0",
-            left: "0",
-            right: "0",
-            zIndex: 10,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            paddingBottom: "env(safe-area-inset-bottom, 48px)",
-            paddingLeft: "32px",
-            paddingRight: "32px",
-            animation: "fadeInMobileHero 1.2s cubic-bezier(0.4,0,0.2,1) 0.4s both"
-          }}
-        >
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "9px",
-            letterSpacing: "0.45em",
-            textTransform: "uppercase",
-            color: "rgba(200,149,108,0.9)",
-            marginBottom: "14px",
-            textAlign: "center",
-            textShadow: "0 1px 12px rgba(0,0,0,0.8)"
-          }}>
-            Luxury Interior Design
-          </p>
-
-          <h1 style={{
-            fontFamily: "'Cormorant Garamond', serif",
-            fontSize: "clamp(42px, 12vw, 64px)",
-            fontWeight: 300,
-            fontStyle: "italic",
-            color: "#FFFFFF",
-            textAlign: "center",
-            lineHeight: 1.1,
-            margin: "0 0 16px 0",
-            textShadow: "0 2px 40px rgba(0,0,0,0.9), 0 1px 12px rgba(0,0,0,0.7)"
-          }}>
-            Where Architecture<br />Meets Living.
-          </h1>
-
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "12px",
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.6)",
-            textAlign: "center",
-            marginBottom: "32px",
-            textShadow: "0 1px 16px rgba(0,0,0,0.9)"
-          }}>
-            Cookscape Studio
-          </p>
-
-          <div style={{
-            width: "1px",
-            height: "40px",
-            background: "linear-gradient(to bottom, rgba(200,149,108,0.8), transparent)",
-            marginBottom: "14px"
-          }} />
-
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "9px",
-            letterSpacing: "0.4em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.4)",
-            textAlign: "center",
-            marginBottom: "48px",
-            textShadow: "0 1px 8px rgba(0,0,0,0.8)"
-          }}>
-            Scroll to Explore
-          </p>
-        </div>
-
-        {/* Studio tag bottom left */}
-        <div style={{
-          position: "absolute",
-          bottom: "48px",
-          left: "28px",
-          zIndex: 10,
-          borderLeft: "1px solid rgba(200,149,108,0.45)",
-          paddingLeft: "12px"
-        }}>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "8px",
-            letterSpacing: "0.28em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.45)",
-            margin: "0 0 4px 0",
-            textShadow: "0 1px 8px rgba(0,0,0,0.9)"
-          }}>
-            Est. 2015 · Mumbai, India
-          </p>
-          <p style={{
-            fontFamily: "'DM Sans', sans-serif",
-            fontSize: "8px",
-            letterSpacing: "0.28em",
-            textTransform: "uppercase",
-            color: "rgba(255,255,255,0.28)",
-            margin: 0,
-            textShadow: "0 1px 8px rgba(0,0,0,0.9)"
-          }}>
-            Residential & Commercial
-          </p>
-        </div>
-
-        {/* Bounce arrow bottom right */}
-        <div style={{
-          position: "absolute",
-          bottom: "36px",
-          right: "28px",
-          zIndex: 10
-        }}>
-          <svg
-            width="16"
-            height="24"
-            viewBox="0 0 16 24"
-            fill="none"
-            style={{
-              animation: "bounceMobile 2s cubic-bezier(0.4,0,0.2,1) infinite"
-            }}
-          >
-            <path
-              d="M8 0 L8 18 M2 12 L8 18 L14 12"
-              stroke="rgba(200,149,108,0.7)"
-              strokeWidth="1"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-      </div>
-    )
-  }
-
   return (
     <>
       {/* ═══════════ LOADING SCREEN ═══════════ */}
@@ -541,7 +487,7 @@ export default function CookscapeScroll() {
             <h1
               className="font-display text-4xl md:text-5xl tracking-wide text-stone-900/90 mb-8"
             >
-              Cookscape
+              Decorpot
             </h1>
             <div className="progress-track">
               <div
@@ -605,7 +551,6 @@ export default function CookscapeScroll() {
               background: "linear-gradient(to top, rgba(10, 9, 8, 0.45) 0%, rgba(10, 9, 8, 0.15) 40%, transparent 100%)",
             }}
           />
-
 
           {/* ── text overlays ─── */}
           {TEXT_BEATS.map((beat, i) => {
@@ -678,4 +623,23 @@ export default function CookscapeScroll() {
       </div>
     </>
   );
+}
+
+export default function DecorpotScroll() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  if (isMobile) {
+    return <MobileHero />;
+  }
+
+  return <DesktopHero />;
 }

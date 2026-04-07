@@ -18,19 +18,19 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Cookscape — Luxury Interior Design Studio",
+  title: "Decorpot — Luxury Interior Design Studio",
   description:
-    "Where architecture meets living. Cookscape crafts curated residential interiors with an editorial eye — spatial planning, material curation, and turnkey delivery for the way you live.",
+    "Where architecture meets living. Decorpot crafts curated residential interiors with an editorial eye — spatial planning, material curation, and turnkey delivery for the way you live.",
   keywords: [
     "luxury interior design",
     "residential interiors",
-    "Cookscape",
+    "Decorpot",
     "spatial planning",
     "material curation",
     "turnkey delivery",
   ],
   openGraph: {
-    title: "Cookscape — Luxury Interior Design Studio",
+    title: "Decorpot — Luxury Interior Design Studio",
     description:
       "Where architecture meets living. Curated interiors for the way you live.",
     type: "website",

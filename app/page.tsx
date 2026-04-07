@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import CookscapeScroll from "@/components/CookscapeScroll";
-import CookscapeNav from "@/components/CookscapeNav";
+import DecorpotScroll from "@/components/DecorpotScroll";
+import DecorpotNav from "@/components/DecorpotNav";
 
 function ProjectCardImage({ project }: { project: any }) {
   return (
@@ -202,7 +202,7 @@ const steps = [
 const testimonials = [
   {
     quote:
-      "Cookscape didn\u2019t just design our home \u2014 they understood how we wanted to feel in it. Every room is exactly right.",
+      "Decorpot didn\u2019t just design our home \u2014 they understood how we wanted to feel in it. Every room is exactly right.",
     name: "Ananya & Rohan Mehta",
     detail: "Private Residence, Mumbai",
   },
@@ -214,7 +214,7 @@ const testimonials = [
   },
   {
     quote:
-      "Our office needed to feel like a home. Cookscape delivered something that inspires everyone who walks through the door.",
+      "Our office needed to feel like a home. Decorpot delivered something that inspires everyone who walks through the door.",
     name: "Priya Chandrasekaran",
     detail: "Studio Workspace, Chennai",
   },
@@ -306,10 +306,10 @@ export default function Home() {
   return (
     <main style={{ backgroundColor: "#F5EDE0" }}>
       {/* ═══ Navigation ═══ */}
-      <CookscapeNav />
+      <DecorpotNav />
 
       {/* ═══ Scroll Sequence ═══ */}
-      <CookscapeScroll />
+      <DecorpotScroll />
 
       {/* ═══════════════════════════════════════════════════════
           SECTION 1 — THREE COLUMN SERVICES GRID
@@ -434,7 +434,7 @@ export default function Home() {
               marginTop: 40,
             }}
           >
-            — COOKSCAPE DESIGN PHILOSOPHY
+            — DECORPOT DESIGN PHILOSOPHY
           </p>
 
           {/* bottom brass line */}
@@ -884,7 +884,7 @@ export default function Home() {
                 letterSpacing: "0.04em",
               }}
             >
-              Cookscape
+              Decorpot
             </p>
             <p
               style={{
@@ -1003,7 +1003,7 @@ export default function Home() {
               color: "rgba(245,237,224,0.3)",
             }}
           >
-            &copy; 2025 Cookscape. All rights reserved.
+            &copy; 2025 Decorpot. All rights reserved.
           </p>
           <p
             style={{

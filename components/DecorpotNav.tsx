@@ -21,7 +21,7 @@ const LogoMark = () => (
 );
 
 /* ─── Component ─────────────────────────────────────────────────── */
-export default function CookscapeNav() {
+export default function DecorpotNav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [scrollPercent, setScrollPercent] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -149,7 +149,7 @@ export default function CookscapeNav() {
                   lineHeight: 1.1,
                 }}
               >
-                Cookscape
+                Decorpot
               </div>
               <div
                 style={{
@@ -345,7 +345,7 @@ export default function CookscapeNav() {
                 letterSpacing: "0.08em",
               }}
             >
-              Cookscape
+              Decorpot
             </p>
 
             {/* nav links */}
